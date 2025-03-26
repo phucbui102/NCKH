@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".Demo">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/img" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_height="350dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="231dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/wave_3" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="255dp"
+            android:background="#568EC8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="138dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Xin chào!"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Nếu cần bất kì sự giúp đỡ nào hãy gửi yêu cầu đến với chúng tôi"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_request"
+            android:layout_width="200dp"
+            android:height="60dp"
+            android:layout_centerInParent="true"
+            android:text="Thông báo sự cỗ"
+            android:textSize="16dp"
+            android:textColor="#1F1F1F"
+            android:backgroundTint="#FFFFFF"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</RelativeLayout>

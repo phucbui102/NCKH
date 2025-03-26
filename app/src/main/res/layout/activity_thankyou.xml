@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@color/light_gray">
+
+    <!-- CardView để tạo hiệu ứng nổi bật -->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Icon thành công -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/logo_no_bk"
+                android:contentDescription="Success Icon"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Tiêu đề cảm ơn -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cảm ơn bạn!"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:paddingBottom="8dp"/>
+
+            <!-- Nội dung thông báo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Báo cáo của bạn đã được gửi đến bộ phận kỹ thuật. Chúng tôi sẽ xử lý sớm nhất có thể."
+                android:textSize="16sp"
+                android:textColor="@color/dark_gray"
+                android:gravity="center"
+                android:paddingBottom="16dp"/>
+
+            <!-- Button quay lại -->
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quay lại trang chính"
+                android:textSize="16sp"
+                android:backgroundTint="@color/main"
+                android:textColor="@color/white"
+                android:padding="12dp"/>
+
+        </LinearLayout>
+
+
+</LinearLayout>

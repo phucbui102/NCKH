@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Khi chọn -->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#1976D2"/> <!-- Xanh dương đậm -->
+        </shape>
+    </item>
+
+    <!-- Khi di chuột vào -->
+    <item android:state_hovered="true">
+        <shape>
+            <solid android:color="#64B5F6"/> <!-- Xanh nhạt hơn -->
+        </shape>
+    </item>
+
+    <!-- Mặc định -->
+    <item>
+        <shape>
+            <solid android:color="@color/white"/> <!-- Màu nền mặc định -->
+        </shape>
+    </item>
+
+</selector>

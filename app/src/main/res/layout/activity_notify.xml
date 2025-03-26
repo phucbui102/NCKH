@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="12dp">
+
+        <!-- ImageView nằm góc trái -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+        <!-- View rỗng để căn giữa TextView -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- TextView nằm giữa -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Báo Hỏng Thiết Bị"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- View rỗng bên phải để cân đối -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+    <!-- Device Selection (Spinner) -->
+    <Spinner
+        android:id="@+id/spinner_device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:dropDownVerticalOffset="45dp"
+        android:background="@drawable/spinner_background"
+
+
+        android:padding="12dp"/>
+
+    <!-- Room Input -->
+    <Spinner
+        android:id="@+id/spinner_device2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/spinner_background"
+        android:dropDownVerticalOffset="45dp"
+
+
+        android:padding="12dp" />
+
+    <EditText
+        android:id="@+id/editTextRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phòng đặt thiết bị"
+        android:layout_marginTop="15dp"
+        android:padding="11dp"
+        android:background="@drawable/edittext_bkg"
+        android:textSize="16sp"/>
+
+    <!-- Issue Description -->
+    <EditText
+        android:id="@+id/editTextIssue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_bkg"
+        android:hint="Mô tả sự cố"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"
+        android:padding="8dp"
+        android:minLines="3"
+        android:maxLines="5"/>
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gửi thông báo"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/white"
+        android:paddingVertical="16dp"
+        android:backgroundTint="@color/main"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/textView_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+</LinearLayout>
