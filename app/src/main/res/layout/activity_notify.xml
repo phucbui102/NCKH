@@ -68,15 +68,26 @@
 
         android:padding="12dp" />
 
+    <Spinner
+        android:id="@+id/spinner_device3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/spinner_background"
+        android:dropDownVerticalOffset="45dp"
+
+
+        android:padding="12dp" />
+
     <EditText
         android:id="@+id/editTextRoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Phòng đặt thiết bị"
         android:layout_marginTop="15dp"
-        android:padding="11dp"
         android:background="@drawable/edittext_bkg"
-        android:textSize="16sp"/>
+        android:hint="Tên thiết bị"
+        android:padding="11dp"
+        android:textSize="16sp" />
 
     <!-- Issue Description -->
     <EditText
@@ -101,11 +112,5 @@
         android:paddingVertical="16dp"
         android:backgroundTint="@color/main"
         android:textSize="18sp"/>
-
-    <TextView
-        android:id="@+id/textView_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 
 </LinearLayout>
