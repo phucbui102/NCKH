@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:background="@drawable/border"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/NameTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Sửa máy tính phòng E1_320"
+        android:textColor="@color/lavender"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:paddingEnd="8dp" />
+
+    <Button
+        android:id="@+id/btnComplete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:text="Hoàn thành"
+        android:textSize="12sp" />
+</LinearLayout>
