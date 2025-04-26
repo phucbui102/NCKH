@@ -47,11 +47,11 @@ public class TaskAdapter extends BaseAdapter {
         Button btnComplete = convertView.findViewById(R.id.btnComplete);
 
         Task task = taskList.get(position);
-        txtTaskName.setText(task.all_attribute + " - " + task.id);
+        txtTaskName.setText(task.describe);
 
         btnComplete.setOnClickListener(v -> {
             // Gọi hàm updateReport từ activity thông qua callback
-            Toast.makeText(context, task.id_device+"hehe", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "đã hoàn thành nhiệm vụ", Toast.LENGTH_SHORT).show();
             if (updateListener != null) {
                 updateListener.onUpdate(task.id, task.id_device);
             }
@@ -67,11 +67,13 @@ public class TaskAdapter extends BaseAdapter {
     public static class Task {
         String all_attribute;
         String id;
+        String describe;
         String id_device;
 
-        public Task(String all_attribute, String id,String id_device) {
+        public Task(String all_attribute, String id,String id_device,String describe) {
             this.all_attribute = all_attribute;
             this.id = id;
+            this.describe = describe;
             this.id_device = id_device;
         }
     }

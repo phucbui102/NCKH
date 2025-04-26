@@ -127,12 +127,12 @@ public class Notify extends AppCompatActivity {
         btnSubmit.setOnClickListener(v -> {
             String room = editTextRoom.getText().toString().trim();
             String issue = editTextIssue.getText().toString().trim();
-
+            String roomAndDescription = room + " - " + issue;
             if (room.isEmpty() || issue.isEmpty()) {
                 Toast.makeText(Notify.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
             } else {
                 int selectedDeviceId = (spinnerDevice.getSelectedItemPosition() > 0) ? id_deviceList.get(spinnerDevice.getSelectedItemPosition() - 1) : -1;
-                sendReport(String.valueOf(selectedDeviceId), room, selectedId);
+                sendReport(String.valueOf(selectedDeviceId), roomAndDescription, selectedId);
             }
         });
     }

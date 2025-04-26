@@ -1,43 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@android:color/white">
+    android:background="@android:color/background_light">
 
-    <!-- Thông tin nhóm -->
-    <TextView
-        android:id="@+id/tvGroupName"
+    <!-- AppBarLayout chứa tiêu đề + tab + nút -->
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nhóm 1"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textColor="@android:color/black" />
+        android:elevation="4dp"
+        android:background="?attr/colorPrimary">
 
-    <!-- Danh sách công việc -->
-    <ListView
-        android:id="@+id/listViewTasks"
+        <!-- Thanh chứa tên nhóm + nút quay lại + avatar -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="32dp">
+
+            <!-- Nút quay lại -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:contentDescription="Back"  />
+
+            <!-- Tên nhóm ở giữa -->
+            <TextView
+                android:id="@+id/tvGroupName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Nhóm 2"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Avatar hình tròn -->
+            <ImageButton
+                android:id="@+id/btnAvatar"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/circle_background"
+                android:contentDescription="Avatar"
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_1" />
+        </RelativeLayout>
+
+        <!-- TabLayout -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/main"
+            app:tabTextColor="@color/main"
+            app:tabSelectedTextColor="@android:color/black"
+            app:tabIndicatorHeight="3dp"
+            app:tabIndicatorFullWidth="true"
+            android:paddingStart="8dp"
+            android:paddingEnd="10dp" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ViewPager2 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"
-        android:padding="8dp" />
-
-    <!-- Nút Đăng xuất -->
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Đăng xuất"
-        android:backgroundTint="@color/blue"
-        android:textColor="@android:color/white"
-        android:padding="12dp"
-        android:layout_marginTop="8dp"/>
-
-</LinearLayout>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

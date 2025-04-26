@@ -6,6 +6,7 @@
     android:gravity="center"
     android:orientation="horizontal"
     android:background="@drawable/border"
+    android:descendantFocusability="blocksDescendants"
     android:padding="8dp">
 
     <TextView
@@ -27,5 +28,7 @@
         android:paddingHorizontal="8dp"
         android:paddingVertical="4dp"
         android:text="Hoàn thành"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:textSize="12sp" />
 </LinearLayout>

@@ -8,7 +8,9 @@
     android:background="#FFFFFF"
     tools:context=".Demo">
 
+    <!-- Logo -->
     <ImageView
+        android:id="@+id/logo_image"
         android:layout_width="match_parent"
         android:layout_height="310dp"
         android:scaleType="fitCenter"
@@ -16,7 +18,22 @@
         android:layout_alignParentTop="true"
         android:src="@drawable/img" />
 
+    <!-- Nút Đăng nhập ngay dưới logo -->
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-80dp"
+        android:text="Đăng nhập"
+        android:backgroundTint="#568EC8"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:elevation="4dp"
+        android:layout_marginBottom="10dp" />
 
+    <!-- Phần wave và nội dung bên dưới -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_alignParentBottom="true"
@@ -70,12 +87,16 @@
         <Button
             android:id="@+id/btn_request"
             android:layout_width="200dp"
-            android:height="60dp"
-            android:layout_centerInParent="true"
-            android:text="Thông báo sự cỗ"
-            android:textSize="16dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="100dp"
+            android:text="Thông báo sự cố"
+            android:textSize="16sp"
             android:textColor="#1F1F1F"
-            android:backgroundTint="#FFFFFF"
-            android:layout_height="wrap_content"/>
+            android:backgroundTint="#FFFFFF" />
+
+
+
     </RelativeLayout>
 </RelativeLayout>
