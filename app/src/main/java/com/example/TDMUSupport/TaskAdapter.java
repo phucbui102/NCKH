@@ -1,4 +1,4 @@
-package com.example.nckh;
+package com.example.TDMUSupport;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -44,18 +44,12 @@ public class TaskAdapter extends BaseAdapter {
         }
 
         TextView txtTaskName = convertView.findViewById(R.id.NameTask);
-        Button btnComplete = convertView.findViewById(R.id.btnComplete);
+
 
         Task task = taskList.get(position);
         txtTaskName.setText(task.describe);
 
-        btnComplete.setOnClickListener(v -> {
-            // Gọi hàm updateReport từ activity thông qua callback
-            Toast.makeText(context, "đã hoàn thành nhiệm vụ", Toast.LENGTH_SHORT).show();
-            if (updateListener != null) {
-                updateListener.onUpdate(task.id, task.id_device);
-            }
-        });
+
 
         return convertView;
     }

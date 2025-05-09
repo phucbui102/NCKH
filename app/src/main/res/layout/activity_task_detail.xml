@@ -1,39 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:background="@android:color/background_light">
 
     <!-- Header -->
-    <TextView
-        android:id="@+id/textViewHeader"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Thông tin lỗi"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="@color/main"
-        android:gravity="center"
-        android:paddingBottom="12dp" />
+        android:layout_height="56dp"
+        android:background="@color/main"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:gravity="center_vertical">
 
-    <!-- Nội dung nhiệm vụ -->
+        <!-- Nút quay lại -->
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/quay_l_i"
+            app:tint="#FFFFFF" />
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:id="@+id/textViewHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Thông tin lỗi"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+    <!-- Nội dung -->
     <TextView
         android:id="@+id/textViewTaskDetail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:padding="16dp"
         android:text="Thông tin nhiệm vụ"
         android:textSize="18sp"
         android:textColor="#333"
         android:lineSpacingExtra="6dp" />
 
-    <!-- Nút quay lại -->
+    <!-- Nút Hoàn thành -->
     <Button
         android:id="@+id/buttonFinal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="Hoàn thành"
         android:backgroundTint="@color/main"
         android:textColor="#FFFFFF" />

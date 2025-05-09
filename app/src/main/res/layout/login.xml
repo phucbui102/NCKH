@@ -65,6 +65,16 @@
                 android:backgroundTint="@color/main"
                 android:text="Đăng nhập"
                 app:cornerRadius = "30dp"/>
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:id="@+id/backbtn"
+                android:textSize="18sp"
+                android:backgroundTint="#EB282828"
+                android:textColor="@color/white"
+            android:text="Quay lại" />
 
         </LinearLayout>
 

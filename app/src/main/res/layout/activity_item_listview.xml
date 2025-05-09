@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:background="@drawable/border"
     android:descendantFocusability="blocksDescendants"
-    android:padding="8dp">
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/NameTask"
@@ -15,20 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Sửa máy tính phòng E1_320"
-        android:textColor="@color/lavender"
+        android:textColor="@color/main"
         android:textSize="14sp"
         android:textStyle="bold"
         android:paddingEnd="8dp" />
-
-    <Button
-        android:id="@+id/btnComplete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/main"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="4dp"
-        android:text="Hoàn thành"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:textSize="12sp" />
 </LinearLayout>

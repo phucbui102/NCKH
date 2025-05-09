@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.nckh"
+    namespace = "com.example.TDMUSupport"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.nckh"
+        applicationId = "com.example.TDMUSupport"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -40,8 +40,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
+    
     implementation ("com.android.volley:volley:1.2.1")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.google.zxing:core:3.4.1")
+    implementation ("com.journeyapps:zxing-android-embedded:4.1.0")
 }

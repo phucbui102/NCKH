@@ -79,15 +79,36 @@
 
         android:padding="12dp" />
 
-    <EditText
-        android:id="@+id/editTextRoom"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:background="@drawable/edittext_bkg"
-        android:hint="Tên thiết bị"
-        android:padding="11dp"
-        android:textSize="16sp" />
+        android:orientation="horizontal">
+
+        <!-- EditText Tên thiết bị -->
+        <EditText
+            android:id="@+id/editTextRoom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_bkg"
+            android:hint="Tên thiết bị"
+            android:padding="11dp"
+            android:textSize="16sp" />
+
+        <!-- Nút Quét Mã Vạch -->
+        <ImageButton
+            android:id="@+id/btnScanBarcode"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/circle_background"
+            android:src="@drawable/baseline_qr_code_scanner_24"
+            android:contentDescription="Quét mã vạch"
+            android:scaleType="centerInside"
+            android:backgroundTint="@color/main"
+            app:tint="@android:color/white" />
+    </LinearLayout>
 
     <!-- Issue Description -->
     <EditText

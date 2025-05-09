@@ -1,4 +1,4 @@
-package com.example.nckh;
+package com.example.TDMUSupport;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -30,11 +31,10 @@ import java.util.List;
 
 public class Notify extends AppCompatActivity {
 
-    private Spinner spinnerArea, spinnerRoom, spinnerDevice;
-    private EditText editTextRoom, editTextIssue;
+    private Spinner spinnerArea, spinnerRoom, spinnerDevice ;
+    private EditText editTextNameDevice, editTextIssue;
     private Button btnSubmit;
-    private ImageView btnBack;
-    private String selectedDevice = "";
+    private ImageView btnBack, btnScan;
     private int selectedId;
 
     private final List<String> areaList = new ArrayList<>();
@@ -53,28 +53,26 @@ public class Notify extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notify);
 
-        // Ánh xạ View
         spinnerRoom = findViewById(R.id.spinner_device2);
         spinnerArea = findViewById(R.id.spinner_device);
         spinnerDevice = findViewById(R.id.spinner_device3);
-        editTextRoom = findViewById(R.id.editTextRoom);
+        editTextNameDevice = findViewById(R.id.editTextRoom);
         editTextIssue = findViewById(R.id.editTextIssue);
         btnSubmit = findViewById(R.id.btn_submit);
         btnBack = findViewById(R.id.backbtn);
+        btnScan = findViewById(R.id.btnScanBarcode);
 
-        // Kiểm tra kết nối Internet trước khi tải dữ liệu
+        // Kiểm tra kết nối mạng
         if (isConnected()) {
             fetchData("area", "", "name", areaList, spinnerArea, id_areaList);
         } else {
             Toast.makeText(this, "Không có kết nối Internet!", Toast.LENGTH_SHORT).show();
         }
 
-        // Thêm tiêu đề mặc định cho danh sách
         areaList.add(0, "Chọn khu vực");
         roomList.add(0, "Chọn phòng");
         deviceList.add(0, "Chọn thiết bị");
 
-        // Adapter cho Spinner
         ArrayAdapter<String> areaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, areaList);
         areaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerArea.setAdapter(areaAdapter);
@@ -87,14 +85,12 @@ public class Notify extends AppCompatActivity {
         deviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDevice.setAdapter(deviceAdapter);
 
-        // Đặt mục mặc định
         spinnerArea.setSelection(0, false);
         spinnerRoom.setSelection(0, false);
         spinnerDevice.setSelection(0, false);
 
         btnBack.setOnClickListener(view -> finish());
 
-        // Xử lý chọn Khu vực -> Lấy danh sách Phòng
         spinnerArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -108,14 +104,12 @@ public class Notify extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        // Xử lý chọn Phòng -> Lấy danh sách Thiết bị
         spinnerRoom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
                     selectedId = id_roomList.get(position - 1);
                     fetchData("device", "id_room=" + selectedId, "name", deviceList, spinnerDevice, id_deviceList);
-                    Toast.makeText(Notify.this, "Phòng ID: " + selectedId, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -123,18 +117,51 @@ public class Notify extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        // Xử lý khi bấm nút gửi
         btnSubmit.setOnClickListener(v -> {
-            String room = editTextRoom.getText().toString().trim();
+            String NameDevice = editTextNameDevice.getText().toString().trim();
             String issue = editTextIssue.getText().toString().trim();
-            String roomAndDescription = room + " - " + issue;
-            if (room.isEmpty() || issue.isEmpty()) {
-                Toast.makeText(Notify.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
-            } else {
-                int selectedDeviceId = (spinnerDevice.getSelectedItemPosition() > 0) ? id_deviceList.get(spinnerDevice.getSelectedItemPosition() - 1) : -1;
+            String roomAndDescription;
+
+            if (NameDevice.isEmpty() || issue.isEmpty()) {
+                // can sua
+                String DeviceName = spinnerDevice.getSelectedItem().toString();
+                 roomAndDescription = DeviceName + " - " + issue;
+                int selectedDeviceId = (spinnerDevice.getSelectedItemPosition() > 0)
+                        ? id_deviceList.get(spinnerDevice.getSelectedItemPosition() - 1) : -1;
+                sendReport(String.valueOf(selectedDeviceId), roomAndDescription, selectedId);
+            } else if (!NameDevice.isEmpty()){
+                roomAndDescription = NameDevice + " - " + issue;
+                int selectedDeviceId= -1;
+//                int selectedDeviceId = (spinnerDevice.getSelectedItemPosition() > 0)
+//                        ? id_deviceList.get(spinnerDevice.getSelectedItemPosition() - 1) : -1;
+                for (int i = 1; i < deviceList.size(); i++) { // Bỏ index 0 vì nó là "Chọn thiết bị"
+                    if (deviceList.get(i).equals(NameDevice)) {
+                        selectedDeviceId = id_deviceList.get(i - 1); // Lấy id tương ứng (vì id_deviceList chỉ lưu từ index 0)
+                        break; // Đã tìm thấy thì thoát vòng lặp luôn
+                    }
+                }
                 sendReport(String.valueOf(selectedDeviceId), roomAndDescription, selectedId);
             }
         });
+
+        // Xử lý quét mã QR
+        btnScan.setOnClickListener(v -> {
+            Intent intent = new Intent(Notify.this, CaptureActivityPortrait.class);
+            startActivityForResult(intent, 1001); // Mã requestCode tùy ý
+        });
+    }
+
+    // Nhận kết quả từ màn hình quét
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1001 && resultCode == RESULT_OK && data != null) {
+            String scanResult = data.getStringExtra("SCAN_RESULT");
+            if (scanResult != null) {
+                editTextNameDevice.setText(scanResult);
+            }
+        }
     }
 
     private boolean isConnected() {
@@ -143,7 +170,7 @@ public class Notify extends AppCompatActivity {
         return netInfo != null && netInfo.isConnected();
     }
 
-    private void sendReport(String device, String description,int id_room) {
+    private void sendReport(String device, String description, int id_room) {
         RequestQueue queue = Volley.newRequestQueue(this);
         JSONObject postData = new JSONObject();
         try {
@@ -166,7 +193,8 @@ public class Notify extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
-    private void fetchData(String table, String where, String value_get, List<String> list, Spinner spinner, List<Integer> id_list) {
+    private void fetchData(String table, String where, String value_get,
+                           List<String> list, Spinner spinner, List<Integer> id_list) {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = URL + "?table=" + table + (!where.isEmpty() ? "&where=" + where : "");
 
@@ -185,7 +213,8 @@ public class Notify extends AppCompatActivity {
                         }
 
                         runOnUiThread(() -> {
-                            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+                            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                                    android.R.layout.simple_spinner_item, list);
                             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             spinner.setAdapter(adapter);
                         });

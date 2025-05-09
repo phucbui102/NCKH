@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "NCKH"
+rootProject.name = "TDMUSupport"
 include(":app")
  
